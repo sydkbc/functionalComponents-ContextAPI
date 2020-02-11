@@ -2,6 +2,41 @@ import React from "react";
 
 const ContentContext = React.createContext({});
 
-export const ContentProvider = ContentContext.Provider;
-export const ContentConsumer = ContentContext.Consumer;
+// This is the initial State
+let initialState = {
+  name: "",
+  rockets: {},
+  launches: []
+};
+
+// This reducer will handle the update of the Context Information
+let reducer = (state, action) => {
+  switch (action.type) {
+    case "RESET":
+      return initialState;
+    case "FETCH":
+      return {
+        ...state,
+        rockets: action.payload.rockets,
+        launches: action.payload.launches
+      };
+  }
+};
+//
+// This is how we will provide the Context Data throughout the App
+// and how we can access/edit these data keeping them in the central state
+//
+function ContentProvider(props) {
+  let [state, dispatch] = React.useReducer(reducer, initialState);
+  let value = { state, dispatch };
+
+  return (
+    <ContentContext.Provider value={value}>
+      {props.children}
+    </ContentContext.Provider>
+  );
+}
+//
+let ContentConsumer = ContentContext.Consumer;
 export default ContentContext;
+export { ContentProvider, ContentConsumer };

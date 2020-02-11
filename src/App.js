@@ -9,6 +9,13 @@ const client = new ApolloClient({
   uri: "http://localhost:5000/graphql"
 });
 //
+// *****************************************************************************************************************  //
+// This is a very simple application.
+// It combines technologies like React, GraphQL, Apollo, Funcional Components, Hooks and Context API
+// The application performs a graphQL call which subsequently interfaces with Space X API to bring information
+// regarding Rockets and Launchings. Once this info is brought they are inserted in the Context Content
+// as a central point of refference, replacing this way Redux
+//
 // Graph QL Apollo React info : https://www.apollographql.com/docs/react/get-started/
 //
 // Context API and Hooks as an alternative of to Class based components with redux
@@ -20,12 +27,16 @@ const client = new ApolloClient({
 //            |  [Context<------- Space X API <----| ]
 //            |
 //            |
+//
+// *****************************************************************************************************************  //
+//
 // Functional Component Child
 //
 //
 function App() {
   const [count, setCount] = useState(0);
   const [name, setName] = useState("Anestis");
+  const state = {};
 
   // Callback when Component mounts or updates
   useEffect(() => {
@@ -42,7 +53,7 @@ function App() {
     <ApolloProvider client={client}>
       <div className="App">
         <header className="App-header">
-          <ContentProvider value={{ count, name }}>
+          <ContentProvider>
             <FC
               propsFromParent="Hello from parent"
               callbackFromChild={callbackFromChild}

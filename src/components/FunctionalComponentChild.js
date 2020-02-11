@@ -3,8 +3,6 @@ import ContextContent from "../ContextContent";
 
 // functional Component
 const FunctionalComponentChild = props => {
-  const [name, setName] = useState("Anestis");
-  const [lastName, setlastName] = useState("Sidiropoulos");
   const [count, setCount] = useState(10);
   const contextData = useContext(ContextContent);
 
@@ -13,8 +11,9 @@ const FunctionalComponentChild = props => {
     count === 0
       ? console.log("Child Child FC mounted")
       : console.log("Child Child FC updated");
-    console.log(contextData);
-    //contextData({ name, count });
+    // This is just a simple Consumer of Context. No dispatch is defined
+    // so the component can only access and read the Context data
+    console.log("This is accessing the Context from FCC", contextData);
   });
 
   return (
