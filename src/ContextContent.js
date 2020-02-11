@@ -4,8 +4,8 @@ const ContentContext = React.createContext({});
 
 // This is the initial State
 let initialState = {
-  name: "",
-  rockets: {},
+  name: "Syd KBC",
+  rockets: [],
   launches: []
 };
 
@@ -14,12 +14,18 @@ let reducer = (state, action) => {
   switch (action.type) {
     case "RESET":
       return initialState;
-    case "FETCH":
+    case "FETCH_ROCKETS":
       return {
         ...state,
-        rockets: action.payload.rockets,
+        rockets: action.payload.rockets
+      };
+    case "FETCH_LAUNCHES":
+      return {
+        ...state,
         launches: action.payload.launches
       };
+    default:
+      return initialState;
   }
 };
 //

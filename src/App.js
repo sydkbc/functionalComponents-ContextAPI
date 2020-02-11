@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
-import FC from "./components/FunctionalComponent";
+import React, { useEffect } from "react";
+import Launches from "./components/Launches";
+import Rockets from "./components/Rockets";
+
 import "./App.css";
 import { ContentProvider } from "./ContextContent";
 import ApolloClient from "apollo-boost";
@@ -34,30 +36,19 @@ const client = new ApolloClient({
 //
 //
 function App() {
-  const [count, setCount] = useState(0);
-  const [name, setName] = useState("Anestis");
-  const state = {};
-
   // Callback when Component mounts or updates
   useEffect(() => {
-    count
-      ? console.log("Parent FC mounted", count, name)
-      : console.log("Parent FC updated", count, name);
+    console.log("App mounted/updated");
   });
-  // Callback from Child COmponent
-  const callbackFromChild = (childData, count) => {
-    console.log("Inside Parent: ", childData, count);
-    setCount(count + 1);
-  };
+
   return (
     <ApolloProvider client={client}>
       <div className="App">
         <header className="App-header">
           <ContentProvider>
-            <FC
-              propsFromParent="Hello from parent"
-              callbackFromChild={callbackFromChild}
-            />
+            <Launches />
+            <br />
+            <Rockets />
           </ContentProvider>
         </header>
       </div>
