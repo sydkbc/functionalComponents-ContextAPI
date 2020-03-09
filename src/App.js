@@ -8,7 +8,7 @@ import ApolloClient from "apollo-boost";
 import { ApolloProvider } from "react-apollo";
 
 const client = new ApolloClient({
-  uri: "https://sydweb.herokuapp.com:5000/graphql"
+  uri: "https://graph-ql-anesid.herokuapp.com//graphql"
 });
 //
 // *****************************************************************************************************************  //
