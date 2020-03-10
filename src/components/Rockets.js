@@ -45,6 +45,7 @@ const Rockets = () => {
     if (data) {
       // console.log("Rockets: ", data.rockets);
       //
+      console.log(data)
       setRockets(data.rockets);
       //
       // Once API response is received dispatch the                   //
